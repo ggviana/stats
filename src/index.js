@@ -1,5 +1,2 @@
-import sum from 'lib/sum'
-
-export default {
-	sum,
-}
+export sum from 'lib/sum'
+export mean from 'lib/mean'

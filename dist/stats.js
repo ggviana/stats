@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -74,17 +74,13 @@
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
-var _sum = __webpack_require__(1);
-
-var _sum2 = _interopRequireDefault(_sum);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-	sum: _sum2.default
+exports.default = function (collection) {
+  return collection.reduce(function (acc, item) {
+    return acc + item;
+  }, 0);
 };
 
 /***/ }),
@@ -97,18 +93,49 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.mean = exports.sum = undefined;
 
-exports.default = function (collection) {
-  return colection.reduce(function (acc, item) {
-    return acc + item;
-  }, 0);
-};
+var _sum2 = __webpack_require__(0);
+
+var _sum3 = _interopRequireDefault(_sum2);
+
+var _mean2 = __webpack_require__(2);
+
+var _mean3 = _interopRequireDefault(_mean2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.sum = _sum3.default;
+exports.mean = _mean3.default;
 
 /***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(0);
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _sum = __webpack_require__(0);
+
+var _sum2 = _interopRequireDefault(_sum);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function (collection) {
+    var size = collection.length;
+
+    return (0, _sum2.default)(collection) / size;
+};
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(1);
 
 
 /***/ })
