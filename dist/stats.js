@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -93,7 +93,7 @@ exports.default = function (collection) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.mean = exports.sum = undefined;
+exports.median = exports.mean = exports.sum = undefined;
 
 var _sum2 = __webpack_require__(0);
 
@@ -103,10 +103,15 @@ var _mean2 = __webpack_require__(2);
 
 var _mean3 = _interopRequireDefault(_mean2);
 
+var _median2 = __webpack_require__(3);
+
+var _median3 = _interopRequireDefault(_median2);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.sum = _sum3.default;
 exports.mean = _mean3.default;
+exports.median = _median3.default;
 
 /***/ }),
 /* 2 */
@@ -133,6 +138,32 @@ exports.default = function (collection) {
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+exports.default = function (collection) {
+    var size = collection.length;
+    var middle = Math.floor(size / 2);
+
+    if (isEven(size)) {
+        return (collection[middle - 1] + collection[middle]) / 2;
+    } else {
+        return (collection[middle] + 1) / 2;
+    }
+};
+
+function isEven(value) {
+    return value % 2 === 0;
+}
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(1);
