@@ -148,6 +148,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 exports.default = function (collection) {
+    collection = sorted(collection);
     var size = collection.length;
     var middle = Math.floor(size / 2);
 
@@ -160,6 +161,12 @@ exports.default = function (collection) {
 
 function isEven(value) {
     return value % 2 === 0;
+}
+
+function sorted(collection) {
+    return collection.sort(function (a, b) {
+        return a - b;
+    });
 }
 
 /***/ }),
