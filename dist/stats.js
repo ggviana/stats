@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -93,7 +93,7 @@ exports.default = function (collection) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.median = exports.mean = exports.sum = undefined;
+exports.mode = exports.median = exports.mean = exports.sum = undefined;
 
 var _sum2 = __webpack_require__(0);
 
@@ -107,11 +107,16 @@ var _median2 = __webpack_require__(3);
 
 var _median3 = _interopRequireDefault(_median2);
 
+var _mode2 = __webpack_require__(4);
+
+var _mode3 = _interopRequireDefault(_mode2);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.sum = _sum3.default;
 exports.mean = _mean3.default;
 exports.median = _median3.default;
+exports.mode = _mode3.default;
 
 /***/ }),
 /* 2 */
@@ -171,6 +176,57 @@ function sorted(collection) {
 
 /***/ }),
 /* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+exports.default = function (collection) {
+    var grouped = group(collection);
+
+    var occurrencesNames = Object.keys(grouped).map(toNumber);
+    var occurrencesValues = occurrencesNames.map(function (item) {
+        return grouped[item];
+    });
+
+    var highestOcurrency = Math.max.apply(null, occurrencesValues);
+    var modes = occurrencesNames.filter(function (item) {
+        return grouped[item] === highestOcurrency;
+    });
+
+    if (modes.length === 0 || occurrencesValues.every(hasSameValueOf(highestOcurrency))) return undefined;
+
+    return modes.sort();
+};
+
+function group(collection) {
+    return collection.reduce(function (groups, key) {
+        if (!groups[key]) {
+            groups[key] = 0;
+        }
+
+        groups[key] += 1;
+
+        return groups;
+    }, {});
+}
+
+function toNumber(value) {
+    return parseFloat(value);
+}
+
+function hasSameValueOf(value) {
+    return function (x) {
+        return x === value;
+    };
+}
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(1);
